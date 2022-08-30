@@ -1,10 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMvc();
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 
 var app = builder.Build();
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -21,6 +24,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.Run();
