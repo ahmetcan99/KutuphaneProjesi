@@ -10,5 +10,10 @@ namespace KutuphaneProjesi.Controllers
             UserInfo userInfo = new();
             return View(userInfo);
         }
+        [HttpPost]
+        public IActionResult Register(UserInfo userInfo)
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
