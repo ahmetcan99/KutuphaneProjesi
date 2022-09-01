@@ -17,6 +17,7 @@ namespace Kutuphane.Rest.Configurations
             builder.Property(x => x.SayfaSayisi).IsRequired();
             builder.Property(x => x.YayinEvi).IsRequired();
             builder.Property(x => x.Durumu).IsRequired();
+            builder.Property(x => x.YayinEvi).HasColumnType("nvarchar(50)");
             
         }
 

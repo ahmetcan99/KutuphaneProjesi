@@ -9,7 +9,7 @@
         public string Türü { get; set; } = String.Empty;
         public DateTime BasimTarihi { get; set; }
         public int SayfaSayisi { get; set; }
-        public int YayinEvi { get; set; }
+        public string YayinEvi { get; set; }
         public int Durumu { get; set; }
     }
 }

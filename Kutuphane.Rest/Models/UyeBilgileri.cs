@@ -13,8 +13,8 @@ namespace Kutuphane.Rest.Models
         public string Soyad { get; set; } = String.Empty;
         public string KullaniciAdi { get; set; } =  String.Empty;
         public string Sifre { get; set; }
-        [NotMapped]
-        public string SifreTekrar { get; set; } 
+        //[NotMapped]
+        //public string SifreTekrar { get; set; } 
         public DateTime KayitTarihi { get; set; }
         public string UyeDurumu { get; set; } = String.Empty;
         public bool  Admin { get; set; }

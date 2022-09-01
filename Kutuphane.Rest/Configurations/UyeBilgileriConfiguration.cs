@@ -12,6 +12,7 @@ namespace Kutuphane.Rest.Configurations
             builder.Property(x=>x.Soyad).IsRequired();
             builder.Property(x => x.KullaniciAdi).IsRequired();
             builder.Property(x => x.Sifre).IsRequired();
+            
             builder.Property(x => x.KayitTarihi).IsRequired();
             builder.Property(x => x.UyeDurumu).IsRequired();
             builder.Property(x => x.Admin).IsRequired();
