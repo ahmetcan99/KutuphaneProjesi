@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KutuphaneProjesi", "KutuphaneProjesi\KutuphaneProjesi.csproj", "{F4CBC77D-42FE-46E3-BFB9-8A603542C242}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kutuphane.Rest", "Kutuphane.Rest\Kutuphane.Rest.csproj", "{A5BFD0E7-13B9-4474-BBBA-443BC5F6D54F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kutuphane.Rest", "Kutuphane.Rest\Kutuphane.Rest.csproj", "{A5BFD0E7-13B9-4474-BBBA-443BC5F6D54F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
