@@ -2,8 +2,7 @@
 using Kutuphane.Rest.Models;
 using Kutuphane.Rest.Tools;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 
 namespace Kutuphane.Rest.Controllers
 {
@@ -17,6 +16,8 @@ namespace Kutuphane.Rest.Controllers
             _dbContext = myDBContext;
 
         }
+
+
         //post: api/Home
         [HttpPost]
         [Route("register")]
@@ -105,7 +106,8 @@ namespace Kutuphane.Rest.Controllers
             _dbContext.SaveChanges();
             return Ok("Güncelleme başarılı");
         }
-        [HttpGet("{id}")]
+        [HttpGet("GetById/{id}")]
+
         public ActionResult<Kitap> GetBookById(int id)
         {
             var kitapItem = _dbContext.Kitaps.Find(id);
@@ -115,6 +117,47 @@ namespace Kutuphane.Rest.Controllers
             }
             return kitapItem;
         }
-      
+
+
+
+
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Kitap>>> GetBookByName(string input)
+        {
+
+            IQueryable<Kitap> sorgu = _dbContext.Kitaps;
+            if (!string.IsNullOrEmpty(input))
+            {
+                sorgu = sorgu.Where(a => a.Adi.Contains(input)||a.Yazari.Contains(input));
+
+            }
+            return await sorgu.ToListAsync();
+
+            try
+            {
+                if (sorgu.Any())
+                {
+                    return Ok(sorgu);
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "hata oluştu veya veri gelmiyor.");
+
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }
