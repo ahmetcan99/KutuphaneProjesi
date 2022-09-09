@@ -2,9 +2,7 @@
 {
     public class UyeDto
     {
-        public string KullaniciAdi { get; set; }
+        public string KullaniciAdi { get; set; } 
         public string Sifre { get; set; }
-        
-
     }
 }

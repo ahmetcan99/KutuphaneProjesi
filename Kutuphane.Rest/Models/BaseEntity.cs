@@ -1,9 +1,8 @@
 ﻿namespace Kutuphane.Rest.Models
 {
-    public class Yayınevi
+    public abstract class BaseEntity
     {
         public int ID { get; set; }
-        public String isim { get; set; }
-
-    }
+       
+}
 }
