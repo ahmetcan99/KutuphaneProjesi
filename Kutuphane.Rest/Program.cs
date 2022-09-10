@@ -13,6 +13,7 @@ builder.Services.AddScoped<IRepositoryKitap, RepositoryKitap>();
 builder.Services.AddScoped<IRepositoryDurum, RepositoryDurum>();
 builder.Services.AddScoped<IRepositoryYayinEvi, RepositoryYayinEvi>();
 builder.Services.AddScoped<IRepositoryUye, RepositoryUye>();
+builder.Services.AddScoped<IRepositoryKitapHareket, RepositoryKitapHareketi>();
 
 builder.Services.AddControllers();
 //dbcontext bağlantısı 

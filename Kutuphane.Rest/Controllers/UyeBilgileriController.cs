@@ -45,22 +45,32 @@ namespace Kutuphane.Rest.Controllers
             return Ok(uyeBilgileris);
         }
 
-        [HttpDelete("{üyeId}")]
+        [HttpDelete("{uyeId}")]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public IActionResult DeleteUyeBilgileri(int uyeId)
+        public IActionResult DeleteUyeBilgileri(int uyeId, [FromBody] UyeBilgileriDto uyedelete )
         {
-            var uyeDelete = _repositoryUye.GetUyeBilgileri(uyeId);
-
-            if(!ModelState.IsValid)
+          
+            if (uyedelete == null)
             {
                 return BadRequest(ModelState);
             }
-
-            if (!_repositoryUye.DeleteUyeBilgileri(uyeDelete))
+            if (uyeId != uyedelete.ID)
             {
-                ModelState.AddModelError(" ", "Yanlış giden bir şeyler var.");
+                return BadRequest(ModelState);
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var uyeMapper = _mapper.Map<UyeBilgileri>(uyedelete);
+
+            if (!_repositoryUye.DeleteUyeBilgileri(uyeMapper))
+            {
+                ModelState.AddModelError(" ", "Ters giden bir şeyler var!");
+                return StatusCode(500, ModelState);
             }
             return Ok("Silme işlemi başarılı");
         }

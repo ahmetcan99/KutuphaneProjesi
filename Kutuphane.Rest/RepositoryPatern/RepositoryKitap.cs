@@ -16,44 +16,40 @@ namespace Kutuphane.Rest.RepositoryPatern
             _mapper = mapper;   
         }
 
-        public bool CreateKitap(int hareketId, int yayinId, Kitap kitap)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool CreateKitap(Kitap kitap)
         {
-            throw new NotImplementedException();
+            kitap.IsDeleted = false;
+            _myDBContext.Add(kitap);
+            return Save();
         }
 
         public bool DeleteKitap(Kitap kitap)
         {
-            throw new NotImplementedException();
+            kitap.IsDeleted=true;
+           _myDBContext.Update(kitap);
+            return Save();
         }
 
         public Kitap GetBookByID(int id)
         {
-            return _myDBContext.Kitaps.Find(id);
+            return _myDBContext.Kitaps.Where(x => x.ID == id).FirstOrDefault();
         }
 
-        //public Kitap GetBookByYayınEvi(int yayınEviID)
-        //{
-        //    return _myDBContext.YayınEvis.Where(y => y.ID == yayınEviID).Select(k => k.Kitap).FirstOrDefault();
-        //}
-
-        public ICollection<Kitap> GetBooks()
+        public ICollection<Kitap> GetBook()
         {
-            return _myDBContext.Kitaps.OrderBy(u => u.ID).ToList();
+            return _myDBContext.Kitaps.Where(x=>x.IsDeleted==false).ToList();
         }
 
-        //public ICollection<YayinEvi> GetBooksByPublisherHouse(int bookId)
-        //{
-        //    return _myDBContext.YayınEvis.Where(r => r.Kitap.ID == bookId).ToList();
-        //}
-
-        public bool UpdateKitap(int hareketId, int yayinId, Kitap kitap)
+        public bool Save()
         {
-            throw new NotImplementedException();
+           var saved= _myDBContext.SaveChanges();
+            return saved >0 ? true : false;
+        }
+
+        public bool UpdateKitap(Kitap kitap)
+        {
+            _myDBContext.Update(kitap);
+            return Save();
         }
     }
 }

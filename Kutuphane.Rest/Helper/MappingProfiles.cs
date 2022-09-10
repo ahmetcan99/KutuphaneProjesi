@@ -19,6 +19,10 @@ namespace Kutuphane.Rest.Helper
             CreateMap<DurumDto, Durum>();
             CreateMap<YayinEviDto,YayinEvi>();
             CreateMap<UyeBilgileriDto,UyeBilgileri>();
+            CreateMap<KitapDto,Kitap>();
+            CreateMap<KitapHareket, KitapHareketDto>();
+            CreateMap<KitapHareketDto, KitapHareket>();
+           
 
         }
 

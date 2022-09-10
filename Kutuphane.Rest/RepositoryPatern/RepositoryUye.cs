@@ -25,7 +25,8 @@ namespace Kutuphane.Rest.RepositoryPatern
 
         public bool DeleteUyeBilgileri(UyeBilgileri uyeBilgileri)
         {
-            _dbContext.Remove(uyeBilgileri);
+            uyeBilgileri.IsDeleted = true;
+            _dbContext.Update(uyeBilgileri);
             return Save();
         }
 
